@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AspExcelFileMvc.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h4>Customers</h4>
+    <hr />
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>CustomerID</th>
+            <th>Contact Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+        @foreach (var  item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CustomerID)</td>
+                <td>@Html.DisplayFor(modelItem => item.ContactName)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.Country)</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+    @using (Html.BeginForm("Export", "Home", FormMethod.Post))
+    {
+        <input type="submit" value="Export" />
+    }
+</body>
+</html>
+
